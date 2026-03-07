@@ -1,0 +1,19 @@
+# --- Python & Environment ---
+.env
+.venv/
+env/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+
+# --- Heavy Data & Artifacts ---
+/data
+/models
+/misc
+/logs
+*.log
+.github/
+/outputs
+/lightning_logs
