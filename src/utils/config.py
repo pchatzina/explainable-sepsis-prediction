@@ -68,7 +68,7 @@ class Config:
     # =========================================================================
     # EHR
     RAW_EHR_COHORT_DIR = DIR_RAW / "ehr" / "cohort" / "2.2"
-    RAW_EHR_PRETRAIN_DIR = DIR_RAW / "ehr" / "pretraining" / "2.2"
+    RAW_EHR_PRETRAINING_DIR = DIR_RAW / "ehr" / "pretraining" / "2.2"
 
     # ECG & CXR
     RAW_ECG_DIR = DIR_RAW / "ecg"
@@ -79,7 +79,7 @@ class Config:
     SRC_EHR_EXPORTS_DIR = (
         PROJECT_ROOT / "src" / "data" / "preprocess" / "ehr" / "exports"
     )
-    SRC_EHR_TRANSFORMS_DIR = (
+    EHR_TRANSFORMATIONS_SRC_DIR = (
         PROJECT_ROOT / "src" / "data" / "preprocess" / "ehr" / "transformations"
     )
     SRC_DB_SETUP_DIR = PROJECT_ROOT / "src" / "data" / "acquisition" / "db" / "setup"
@@ -89,7 +89,7 @@ class Config:
     # =========================================================================
     # EHR
     PROCESSED_EHR_COHORT_DIR = DIR_PROCESSED / "ehr" / "cohort"
-    PROCESSED_EHR_PRETRAIN_DIR = DIR_PROCESSED / "ehr" / "pretraining"
+    PROCESSED_EHR_PRETRAINING_DIR = DIR_PROCESSED / "ehr" / "pretraining"
     PROCESSED_EHR_LABELS_DIR = DIR_PROCESSED / "ehr" / "labels"
     PROCESSED_EHR_EMBEDDINGS_DIR = DIR_PROCESSED / "ehr" / "embeddings"
 
@@ -97,10 +97,10 @@ class Config:
     PROCESSED_EHR_MEDS_COHORT_DIR = (
         DIR_PROCESSED / "ehr" / "cohort" / "mimic-iv-meds-reader"
     )
-    PROCESSED_EHR_MEDS_PRETRAIN_DIR = (
+    PROCESSED_EHR_MEDS_PRETRAINING_DIR = (
         DIR_PROCESSED / "ehr" / "pretraining" / "mimic-iv-meds-reader"
     )
-    PROCESSED_EHR_MEDS_META_FILE = (
+    PROCESSED_EHR_MEDS_METADATA_FILE = (
         DIR_PROCESSED
         / "ehr"
         / "pretraining"

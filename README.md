@@ -64,4 +64,5 @@ This project relies on the MIMIC-IV dataset, which is a restricted-access resour
 ## 🚧 Status
 **Current Status:**
 - Data acquisition: complete
+- Data preprocessing: complete
 - Testing for all the above: complete
