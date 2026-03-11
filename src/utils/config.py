@@ -83,6 +83,7 @@ class Config:
         PROJECT_ROOT / "src" / "data" / "preprocess" / "ehr" / "transformations"
     )
     SRC_DB_SETUP_DIR = PROJECT_ROOT / "src" / "data" / "acquisition" / "db" / "setup"
+    HYDRA_CONFIG_DIR = PROJECT_ROOT / "conf"
 
     # =========================================================================
     # 5. PROCESSED DATA PATHS
@@ -123,10 +124,10 @@ class Config:
     # 6. MODEL ARTIFACT PATHS
     # =========================================================================
     # EHR - MOTOR Foundation Model
-    MODEL_EHR_MOTOR_PRETRAIN_FILES_DIR = (
+    MODEL_EHR_MOTOR_PRETRAINING_FILES_DIR = (
         DIR_MODELS / "ehr" / "motor" / "pretraining_files"
     )
-    MODEL_EHR_MOTOR_PRETRAIN_OUT_DIR = (
+    MODEL_EHR_MOTOR_PRETRAINING_OUT_DIR = (
         DIR_MODELS / "ehr" / "motor" / "pretraining_output"
     )
     MODEL_EHR_MOTOR_WEIGHTS_DIR = DIR_MODELS / "ehr" / "motor" / "model"
