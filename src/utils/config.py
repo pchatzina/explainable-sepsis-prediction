@@ -110,10 +110,10 @@ class Config:
         / "codes.parquet"
     )
 
+    PROCESSED_COHORT_PARQUET_FILE = DIR_PROCESSED / "master_cohort.parquet"
+
     # ECG
     PROCESSED_ECG_ROOT_DIR = DIR_PROCESSED / "ecg"
-    PROCESSED_ECG_LABELS_DIR = DIR_PROCESSED / "ecg" / "labels"
-    PROCESSED_ECG_MANIFEST_DIR = DIR_PROCESSED / "ecg" / "manifests"
     PROCESSED_ECG_EMBEDDINGS_DIR = DIR_PROCESSED / "ecg" / "embeddings"
 
     # CXR

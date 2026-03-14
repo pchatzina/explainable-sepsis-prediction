@@ -27,12 +27,6 @@ python -m src.data.preprocess.ecg.records
 
 # 2. Preprocess ECG signals (e.g., filtering, resampling)
 python -m src.data.preprocess.ecg.signals
-
-# 3. Generate prediction labels and anchor times for the ECG cohort
-python -m src.data.preprocess.ecg.ecg_labels
-
-# 4. Create fairseq-compatible manifest files for downstream embedding extraction
-python -m src.data.preprocess.ecg.create_manifests
 ```
 
 Each script will output intermediate files in the appropriate processed data directories as defined by your configuration.

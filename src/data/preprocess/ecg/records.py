@@ -128,11 +128,18 @@ def main():
     records = query_to_df("SELECT * FROM mimiciv_ecg.record_list")
     logger.info("Raw records found: %d", len(records))
 
-    logger.info("Fetching valid cohort from PostgreSQL...")
-    cohort_query = "SELECT subject_id, study_id FROM mimiciv_ext.cohort_ecg"
-    cohort_df = query_to_df(cohort_query)
+    logger.info("Fetching valid cohort from Master parquet file...")
+    cohort_df = pd.read_parquet(
+        Config.PROCESSED_COHORT_PARQUET_FILE, columns=["subject_id", "ecg_study_id"]
+    )
 
-    records = records.merge(cohort_df, how="inner", on=["subject_id", "study_id"])
+    records = records.merge(
+        cohort_df,
+        how="inner",
+        left_on=["subject_id", "study_id"],
+        right_on=["subject_id", "ecg_study_id"],
+    )
+
     logger.info("Records remaining after cohort filtering: %d", len(records))
 
     results = {}

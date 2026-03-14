@@ -1,3 +1,8 @@
+"""
+Run:
+pytest tests/test_data_acquisition_pipeline.py -v
+"""
+
 import pytest
 from pathlib import Path
 from sqlalchemy import text
@@ -6,6 +11,7 @@ from src.utils.config import Config
 import zipfile
 from PIL import Image
 import wfdb
+import pandas as pd
 
 # --- EXPECTED DETERMINISTIC COUNTS ---
 EXPECTED_TOTAL_PATIENTS = 15513
@@ -231,3 +237,61 @@ def test_cxr_reports_zip_not_corrupted():
     with zipfile.ZipFile(reports_path, "r") as zf:
         bad_file = zf.testzip()
         assert bad_file is None, f"Corrupted entry in CXR reports ZIP: {bad_file}"
+
+
+# --- EXTRACT COHORT SPLITS TESTS ---
+
+
+def test_extract_cohort_splits_creates_file(db_engine, tmp_path):
+    """
+    Test that extract_cohort_splits creates the master cohort file.
+    """
+    from src.data.acquisition.extract_cohort_splits import create_master_cohort
+
+    # Override the output path to a temporary directory
+    original_path = Config.PROCESSED_COHORT_PARQUET_FILE
+    temp_output_path = tmp_path / "master_cohort.parquet"
+    Config.PROCESSED_COHORT_PARQUET_FILE = temp_output_path
+
+    try:
+        create_master_cohort()
+
+        # Check if the file is created
+        assert temp_output_path.exists(), "Master cohort file was not created."
+
+        # Validate the file content
+        df = pd.read_parquet(temp_output_path)
+        assert not df.empty, "Master cohort file is empty."
+        assert set(df.columns) >= {"subject_id", "dataset_split", "sepsis_label"}, (
+            "Master cohort file is missing required columns."
+        )
+    finally:
+        # Restore the original path
+        Config.PROCESSED_COHORT_PARQUET_FILE = original_path
+
+
+def test_extract_cohort_splits_split_distribution(db_engine, tmp_path):
+    """
+    Test that the dataset splits are correctly standardized.
+    """
+    from src.data.acquisition.extract_cohort_splits import create_master_cohort
+
+    # Override the output path to a temporary directory
+    original_path = Config.PROCESSED_COHORT_PARQUET_FILE
+    temp_output_path = tmp_path / "master_cohort.parquet"
+    Config.PROCESSED_COHORT_PARQUET_FILE = temp_output_path
+
+    try:
+        create_master_cohort()
+
+        # Load the generated file
+        df = pd.read_parquet(temp_output_path)
+
+        # Check split distribution
+        splits = df["dataset_split"].value_counts()
+        assert "train" in splits, "Train split is missing."
+        assert "valid" in splits, "Validation split is missing."
+        assert "test" in splits, "Test split is missing."
+    finally:
+        # Restore the original path
+        Config.PROCESSED_COHORT_PARQUET_FILE = original_path

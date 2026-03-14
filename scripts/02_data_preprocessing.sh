@@ -32,10 +32,4 @@ python -m src.data.preprocess.ecg.records
 echo "[ECG] Step 2: Preprocess ECG signals..."
 python -m src.data.preprocess.ecg.signals
 
-echo "[ECG] Step 3: Generate prediction labels and anchor times for ECG cohort..."
-python -m src.data.preprocess.ecg.ecg_labels
-
-echo "[ECG] Step 4: Create fairseq-compatible manifest files..."
-python -m src.data.preprocess.ecg.create_manifests
-
 echo "[DATA PREPROCESSING] All steps complete."

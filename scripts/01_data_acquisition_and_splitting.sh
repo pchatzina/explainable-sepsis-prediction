@@ -42,4 +42,8 @@ python -m src.data.acquisition.downloads.download_ecg_files
 echo "[Phase 5] Creating patient strata and dataset splits..."
 $PSQL_CMD src/data/acquisition/db/data_splitting/create_training_split.sql
 
-echo "[Done] Data acquisition and splitting pipeline completed successfully."
+# --- Phase 6: Extract Master Cohort ---
+echo "[Phase 6] Extracting master cohort and saving to parquet..."
+python -m src.data.acquisition.extract_cohort_splits
+
+echo "[Done] Data acquisition, splitting, and cohort extraction completed successfully."

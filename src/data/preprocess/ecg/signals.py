@@ -6,7 +6,7 @@ apply resampling to a standard frequency (500 Hz), and perform z-score normaliza
 It deliberately skips segmentation to preserve the entire ECG waveform (typically 10s)
 for whole-ECG downstream classification.
 
-The preprocessed signals are saved as `.mat` files, named by `subject_id`.
+The preprocessed signals are saved as `.mat` files, named by `study_id`.
 
 Usage:
     python -m src.data.preprocess.ecg.signals
@@ -68,9 +68,8 @@ def main():
     # Construct full paths for the waveforms
     records["path"] = records["path"].apply(lambda p: str(args.raw_root / p))
 
-    # Save using subject_id to align with EHR modalities for late fusion
-    records["save_file"] = records["subject_id"].astype(str) + ".mat"
-    logger.info("Mapped save files to subject_id.")
+    records["save_file"] = records["study_id"].astype(str) + ".mat"
+    logger.info("Mapped save files to study_id.")
 
     records["source"] = SOURCE
     records["dataset"] = SOURCE
