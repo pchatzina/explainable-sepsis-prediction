@@ -92,7 +92,8 @@ class Config:
     PROCESSED_EHR_COHORT_DIR = DIR_PROCESSED / "ehr" / "cohort"
     PROCESSED_EHR_PRETRAINING_DIR = DIR_PROCESSED / "ehr" / "pretraining"
     PROCESSED_EHR_LABELS_DIR = DIR_PROCESSED / "ehr" / "labels"
-    PROCESSED_EHR_EMBEDDINGS_DIR = DIR_PROCESSED / "ehr" / "embeddings"
+    PROCESSED_EHR_EMBEDDINGS_DIR = DIR_PROCESSED / "ehr" / "embeddings" / "normalized"
+    PROCESSED_EHR_RAW_EMBEDDINGS_DIR = DIR_PROCESSED / "ehr" / "embeddings" / "raw"
 
     # EHR MEDS Reader dependencies
     PROCESSED_EHR_MEDS_COHORT_DIR = (
@@ -114,11 +115,22 @@ class Config:
 
     # ECG
     PROCESSED_ECG_ROOT_DIR = DIR_PROCESSED / "ecg"
-    PROCESSED_ECG_EMBEDDINGS_DIR = DIR_PROCESSED / "ecg" / "embeddings"
+    PROCESSED_ECG_EMBEDDINGS_DIR = DIR_PROCESSED / "ecg" / "embeddings" / "normalized"
+    PROCESSED_ECG_RAW_EMBEDDINGS_DIR = DIR_PROCESSED / "ecg" / "embeddings" / "raw"
 
     # CXR
-    PROCESSED_CXR_IMG_EMBEDDINGS_DIR = DIR_PROCESSED / "cxr_img" / "embeddings"
-    PROCESSED_CXR_TXT_EMBEDDINGS_DIR = DIR_PROCESSED / "cxr_txt" / "embeddings"
+    PROCESSED_CXR_IMG_EMBEDDINGS_DIR = (
+        DIR_PROCESSED / "cxr_img" / "embeddings" / "normalized"
+    )
+    PROCESSED_CXR_TXT_EMBEDDINGS_DIR = (
+        DIR_PROCESSED / "cxr_txt" / "embeddings" / "normalized"
+    )
+    PROCESSED_CXR_IMG_RAW_EMBEDDINGS_DIR = (
+        DIR_PROCESSED / "cxr_img" / "embeddings" / "raw"
+    )
+    PROCESSED_CXR_TXT_RAW_EMBEDDINGS_DIR = (
+        DIR_PROCESSED / "cxr_txt" / "embeddings" / "raw"
+    )
 
     # =========================================================================
     # 6. MODEL ARTIFACT PATHS
@@ -165,7 +177,7 @@ class Config:
     LOGS_ROOT_DIR = DIR_LOGS
     TENSORBOARD_DIR = LOGS_ROOT_DIR / "tensorboard"
     RESULTS_DIR = PROJECT_ROOT / "results"
-    LOGS_ROOT_DIR = DIR_LOGS
+    REPORT_EMBEDDINGS_DIR = RESULTS_DIR / "embeddings"
 
     # =========================================================================
     # 8. UTILITY METHODS

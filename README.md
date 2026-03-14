@@ -66,4 +66,5 @@ This project relies on the MIMIC-IV dataset, which is a restricted-access resour
 - Data acquisition: complete
 - Data preprocessing: complete
 - Foundation Models setup: complete
+- Embeddings extraction: complete
 - Testing for all the above: complete
