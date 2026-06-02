@@ -1,0 +1,7 @@
+name: "scratch"
+use_pretrained_unimodal_weights: false
+tune_ehr_dropout: true
+learning_rate: 1e-4
+batch_size: 64
+epochs: 50
+apply_calibration: true

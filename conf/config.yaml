@@ -1,0 +1,14 @@
+defaults:
+  - architecture: late_fusion
+  - modalities: 4_modality
+  - training: pretrained
+  - _self_
+
+project_name: "mmsp_thesis"
+seed: 42
+
+paths:
+  raw_data_dir: ${oc.env:RAW_DATA_DIR, ./data/raw}
+  processed_data_dir: ${oc.env:PROCESSED_DATA_DIR, ./data/processed}
+  models_data_dir: ${oc.env:MODELS_DATA_DIR, ./models}
+  results_dir: ${oc.env:RESULTS_DATA_DIR, ./results}

@@ -1,0 +1,25 @@
+# --- Python & Environment ---
+.env
+.venv/
+env/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.github/
+
+# --- Heavy Data & Artifacts ---
+/data
+/models
+/misc
+/outputs
+/docs
+!docs/description.pdf
+!docs/LICENSE.md
+/results
+*.log
+*.csv
+*.json
+*.parquet
+*.arrow

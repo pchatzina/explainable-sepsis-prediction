@@ -1,0 +1,6 @@
+name: "4_modality_baseline"
+active:
+  - ehr
+  - ecg
+  - cxr_img
+  - cxr_txt
